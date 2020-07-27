@@ -1,4 +1,4 @@
 {
-  "host": "node-express-env.eba-8jkbhdmk.us-east-1.elasticbeanstalk.com",
+  "host": "stonks-api-dev.us-east-1.elasticbeanstalk.com/",
   "port": "3030"
 }
