@@ -1,13 +1,17 @@
 const { getBase64DataURI } = require('dauria');
 const path = require('path');
+
+
+// // 🤞 Declaring NODE_CONFIG_DIR before @feathersjs/configuration loads.
+// process.env['NODE_CONFIG_DIR'] = path.join(__dirname, 'config/')
+
+
 const favicon = require('serve-favicon');
 const compress = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const logger = require('./logger');
 
-// 🤞 Declaring NODE_CONFIG_DIR before @feathersjs/configuration loads.
-process.env['NODE_CONFIG_DIR'] = path.join(__dirname, 'config/')
 
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
