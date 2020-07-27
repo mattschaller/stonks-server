@@ -1,0 +1,59 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "entity": "user",
+    "service": "users",
+    "secret": "jGRbWcSl9CDeot/RJ50tb1oULwM=",
+    "authStrategies": [
+      "jwt",
+      "local",
+      "github",
+      "facebook",
+      "google"
+    ],
+    "jwtOptions": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "https://mattschaller.com",
+      "issuer": "mattschaller",
+      "algorithm": "HS256",
+      "expiresIn": "1d"
+    },
+    "local": {
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "oauth": {
+      "redirect": "http://localhost:3000/login",
+      "google": {
+        "key": "576101942207-m4em8pmk8ljuvhvks9hievpd75vfl6au.apps.googleusercontent.com",
+        "secret": "-xSy9C6ml-9arPp-FyQl1i6h",
+        "scope": [
+          "email",
+          "profile",
+          "openid"
+        ],
+        "nonce": true
+      },
+      "facebook": {
+        "key": "266477201274745",
+        "secret": "09e97225ef8148b6cd35559fb7c16e7c"
+      },
+      "github": {
+        "key": "f55ad7dae6d8ddd86b89",
+        "secret": "a4f7aa23d8cdf33442154428e141b9a7324980b4"
+      }
+    }
+  },
+  "nedb": "../data",
+  "finnHub": "brvmn4frh5rckcaglq1g",
+  "AWS_ACCESS_KEY_ID": "AKIAYOM5SU5UT3BKMYCB",
+  "AWS_SECRET_ACCESS_KEY": "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"
+}
