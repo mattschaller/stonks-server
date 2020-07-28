@@ -27,7 +27,6 @@ class GoogleStrategy extends OAuthStrategy {
 }
 
 class FacebookStrategy extends OAuthStrategy {
-
     async getProfile (authResult) {
         // This is the oAuth access token that can be used
         // for Facebook API requests as the Bearer token

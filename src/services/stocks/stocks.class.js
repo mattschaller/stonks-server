@@ -1,6 +1,6 @@
 const finnhub = require('finnhub');
 const api_key = finnhub.ApiClient.instance.authentications['api_key'];
-api_key.apiKey = "brvmn4frh5rckcaglq1g";
+api_key.apiKey = process.env.FINNHUB_KEY;
 const finnhubClient = new finnhub.DefaultApi()
 
 /* eslint-disable no-unused-vars */
