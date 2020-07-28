@@ -29,11 +29,12 @@ module.exports = function(app) {
 
     // Leave and re-join all channels with new user information
     const updateChannels = user => {
-        console.log(`Updating channels for ${user._id}`)
+        console.log(app.channel(app.channels))
+
         const { connections } = app.channel(app.channels).filter(connection =>
-            connection.user._id === user._id
+            connection.user && connection.user._id === user._id
         );
-        console.log(`Active connections: `, connections)
+        
         connections.forEach(connection => leaveChannels(user, connection));
         connections.forEach(connection => joinChannels(user, connection));
     }

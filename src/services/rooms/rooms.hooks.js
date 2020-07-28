@@ -19,7 +19,7 @@ module.exports = {
     all: [],
     find: [populateUser()],
     get: [populateUser()],
-    create: [linkUsers(), populateUser(),],
+    create: [linkUsers(), populateUser(),], 
     update: [],
     patch: [],
     remove: []

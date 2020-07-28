@@ -16,20 +16,19 @@ module.exports = function (options = {}) { // eslint-disable-line no-unused-vars
         // TODO: use map and Promise.all 
         
         const addRoomToMembers = async data => {
-            console.log(params);
-            if(!data.members) return false;
+            if(!data.members || data.members.length === 0 ) return false;
             let { members } = data;
             for (let i = 0; i < members.length; i++) {
                 let user = await app.service('users').get(members[i])
-                if(user && user.rooms){
-                    let updatedUser = await app.service('users').patch(user._id, { rooms: [...user.rooms, data._id] });
+                if(user && user._id && user.rooms){
+                    let updatedUser = await app.service('users').patch(user._id, { rooms: [...user.rooms, data._id] }, params).catch(err => console.log(err));
                     if(updatedUser){
                         console.log(`Added room ${data._id} to user ${user._id}`)
                     }
                 }
             }
-            return true;
         }
+
         if(method === 'find') {
             await Promise.all(context.result.data.map(addRoomToMembers))
         } else {
