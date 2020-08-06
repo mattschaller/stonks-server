@@ -3,13 +3,13 @@
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 module.exports = function (app) {
-  const modelName = 'messages';
+  const modelName = 'channels';
   const mongooseClient = app.get('mongooseClient');
   const { Schema } = mongooseClient;
   const schema = new Schema({
-    text: { type: String, required: true },
-    roomId: { type: String, required: true },
-    userId: { type: String, required: true }
+    name: { type: String, required: true },
+    private: { type: Boolean, required: true },
+    members: { type: Array, required: true }
   }, {
     timestamps: true
   });

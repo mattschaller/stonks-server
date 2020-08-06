@@ -1,5 +1,5 @@
 // This is the database adapter service class
-const { Service } = require('feathers-nedb');
+const { Service } = require('feathers-mongoose');
 
 const crypto = require('crypto');
 const gravatarUrl = 'https://s.gravatar.com/avatar';
@@ -29,5 +29,5 @@ exports.Users = class Users extends Service {
 
     // Call the original `create` method with existing `params` and new data
     return super.create(userData, params);
-  }  
+  }
 };

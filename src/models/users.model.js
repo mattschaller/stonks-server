@@ -1,14 +1,40 @@
-const NeDB = require('nedb');
-const path = require('path');
-
+// channels-model.js - A mongoose model
+//
+// See http://mongoosejs.com/docs/models.html
+// for more of what you can do here.
 module.exports = function (app) {
-  const dbPath = app.get('nedb');
-  const Model = new NeDB({
-    filename: path.join(dbPath, 'users.db'),
-    autoload: true
+  const modelName = 'users';
+  const mongooseClient = app.get('mongooseClient');
+  const { Schema } = mongooseClient;
+  const schema = new Schema({
+    email: { type: String, required: false },
+    name: { type: String, required: false },
+    password: { type: String, required: false },
+    avatar: { type: String, required: false },
+    rooms: { type: Array, required: true },
+    githubId: { type: String, required: false },
+    googleId: { type: String, required: false },
+    facebookId: { type: String, required: false },
+  }, {
+    timestamps: true
   });
 
-  Model.ensureIndex({ fieldName: 'email', unique: true });
 
-  return Model;
+  // email,
+  // name,
+  // password,
+  // githubId,
+  // googleId,
+  // facebookId,
+  // avatar,
+  // rooms: []
+
+
+  // This is necessary to avoid model compilation errors in watch mode
+  // see https://mongoosejs.com/docs/api/connection.html#connection_Connection-deleteModel
+  if (mongooseClient.modelNames().includes(modelName)) {
+    mongooseClient.deleteModel(modelName);
+  }
+  return mongooseClient.model(modelName, schema);
+
 };
